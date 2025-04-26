@@ -11,7 +11,11 @@ def load_recipes():
 
 @st.cache_data
 def load_reviews():
-    return pd.read_csv("reviews.csv")
+    try:
+        return pd.read_csv("reviews.csv")
+    except Exception as e:
+        st.error(f"Failed to load reviews: {e}")
+        return pd.DataFrame()
 
 recipes = load_recipes()
 reviews = load_reviews()
