@@ -11,7 +11,7 @@ def load_recipes():
 
 @st.cache_data
 def load_reviews():
-    return pd.read_csv("/kaggle/input/foodcom-recipes-and-reviews/reviews.csv")
+    return pd.read_csv("reviews.csv")
 
 recipes = load_recipes()
 reviews = load_reviews()
