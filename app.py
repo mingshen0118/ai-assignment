@@ -3,9 +3,6 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 import re
-import kagglehub
-
-kagglehub.dataset_download("irkaal/foodcom-recipes-and-reviews")
 
 # Load data
 @st.cache_data
