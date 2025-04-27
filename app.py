@@ -9,7 +9,7 @@ import re
 def load_recipes():
     #return pd.read_csv("https://drive.google.com/uc?id=1RQQk2fijSMUresMZnZSPN2OFBpx_4p2r")
     df_list = []
-    chunks = pd.read_csv("https://drive.google.com/uc?export=download&id=1RQQk2fijSMUresMZnZSPN2OFBpx_4p2r", chunk_size = 10000,low_memory=False)
+    chunks = pd.read_csv("https://drive.google.com/uc?export=download&id=1RQQk2fijSMUresMZnZSPN2OFBpx_4p2r", chunksize = 10000,low_memory=False)
     
     for chunk in chunks:
         st.write(chunk.head())
