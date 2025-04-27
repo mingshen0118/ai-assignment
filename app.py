@@ -14,7 +14,11 @@ def load_recipes():
 
 @st.cache_data
 def load_reviews():
-    return pd.read_csv("reviews.csv", nrow = 1000)
+    #return pd.read_csv("reviews.csv", nrow = 1000)
+    chunk_iter = pd.read_csv("reviews.csv", chunksize = 10000)
+    df = pd.concat(chunk_iter)
+    st.write(df.columns)
+    return df
 
 recipes = load_recipes()
 reviews = load_reviews()
