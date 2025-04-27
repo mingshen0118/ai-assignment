@@ -8,7 +8,14 @@ import re
 @st.cache_data
 def load_recipes():
     #return pd.read_csv("https://drive.google.com/uc?id=1RQQk2fijSMUresMZnZSPN2OFBpx_4p2r")
-    df = pd.read_csv("https://drive.google.com/uc?export=download&id=1RQQk2fijSMUresMZnZSPN2OFBpx_4p2r", low_memory=False)
+    df_list = []
+    chunks = pd.read_csv("https://drive.google.com/uc?export=download&id=1RQQk2fijSMUresMZnZSPN2OFBpx_4p2r", chunk_size = 10000,low_memory=False)
+    
+    for chunk in chunks:
+        st.write(chunk.head())
+        df_list.append(chunk)
+    
+    df = pd.concat(df_list, ignore_index=True)
     st.write(df.columns)  # Check column names
     return df
 
