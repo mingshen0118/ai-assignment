@@ -31,7 +31,18 @@ def precompute_tfidf(recipes):
         max_features=5000,
         ngram_range=(1, 2)
     )
-    tfidf_matrix = tfidf_model.fit_transform(recipes['text_features'].fillna(''))
+    #tfidf_matrix = tfidf_model.fit_transform(recipes['text_features'].fillna(''))
+    chunk_iter = pd.read_csv("preprocessed_recipes.csv", chunksize=10000)
+    tfidf_matrix_list = []
+    
+    for chunk in chunk_iter:
+        matrix_chunk = tfidf_model.fit_transform(chunk['text_features'].fillna(''))
+        tfidf_matrix_list.append(matrix_chunk)
+        
+    # You can either stack them if needed
+    from scipy.sparse import vstack
+    full_tfidf_matrix = vstack(tfidf_matrix_list)
+
     return tfidf_model, tfidf_matrix
 
 tfidf_model, tfidf_matrix = precompute_tfidf(recipes)
