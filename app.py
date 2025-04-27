@@ -7,7 +7,10 @@ import re
 # Load data
 @st.cache_data
 def load_recipes():
-    return pd.read_csv("https://drive.google.com/uc?id=1RQQk2fijSMUresMZnZSPN2OFBpx_4p2r", low_memory=False)
+    #return pd.read_csv("https://drive.google.com/uc?id=1RQQk2fijSMUresMZnZSPN2OFBpx_4p2r")
+    df = pd.read_csv("https://drive.google.com/uc?id=1RQQk2fijSMUresMZnZSPN2OFBpx_4p2r", low_memory=False)
+    st.write(df.columns)  # Check column names
+    return df
 
 @st.cache_data
 def load_reviews():
