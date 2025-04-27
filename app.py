@@ -7,7 +7,9 @@ import re
 # Load data
 @st.cache_data
 def load_recipes():
-    return pd.read_csv("preprocessed_recipes.csv", nrows = 1000)
+    df = pd.read_csv("preprocessed_recipes.csv", nrows = 1000)
+    st.write(df.columns)
+    return df
 
 @st.cache_data
 def load_reviews():
