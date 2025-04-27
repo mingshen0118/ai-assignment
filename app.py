@@ -8,13 +8,13 @@ import re
 @st.cache_data
 def load_recipes():
     #return pd.read_csv("https://drive.google.com/uc?id=1RQQk2fijSMUresMZnZSPN2OFBpx_4p2r")
-    df = pd.read_csv("https://drive.google.com/uc?id=1RQQk2fijSMUresMZnZSPN2OFBpx_4p2r", low_memory=False)
+    df = pd.read_csv("https://drive.google.com/uc?export=download&id=1RQQk2fijSMUresMZnZSPN2OFBpx_4p2r", low_memory=False)
     st.write(df.columns)  # Check column names
     return df
 
 @st.cache_data
 def load_reviews():
-    return pd.read_csv("https://drive.google.com/uc?id=1xbHr4eftazl-005A56F-JufF4A9Rh5h9", low_memory=False)
+    return pd.read_csv("https://drive.google.com/uc?export=download&id=1xbHr4eftazl-005A56F-JufF4A9Rh5h9", low_memory=False)
 
 recipes = load_recipes()
 reviews = load_reviews()
