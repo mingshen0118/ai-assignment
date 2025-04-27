@@ -7,21 +7,11 @@ import re
 # Load data
 @st.cache_data
 def load_recipes():
-    #return pd.read_csv("https://drive.google.com/uc?id=1RQQk2fijSMUresMZnZSPN2OFBpx_4p2r")
-    df_list = []
-    chunks = pd.read_csv("https://drive.google.com/uc?export=download&id=1RQQk2fijSMUresMZnZSPN2OFBpx_4p2r", chunksize = 10000,low_memory=False)
-    
-    for chunk in chunks:
-        st.write(chunk.head())
-        df_list.append(chunk)
-    
-    df = pd.concat(df_list, ignore_index=True)
-    st.write(df.columns)  # Check column names
-    return df
+    return pd.read_csv("preprocessed_recipes.csv", nrows = 1000)
 
 @st.cache_data
 def load_reviews():
-    return pd.read_csv("https://drive.google.com/uc?export=download&id=1xbHr4eftazl-005A56F-JufF4A9Rh5h9", low_memory=False)
+    return pd.read_csv("reviews.csv", nrow = 1000)
 
 recipes = load_recipes()
 reviews = load_reviews()
