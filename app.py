@@ -7,7 +7,8 @@ import re
 # Load data
 @st.cache_data
 def load_recipes():
-    df = pd.read_csv("preprocessed_recipes.csv", nrows = 1000)
+    chunk_iter = pd.read_csv("preprocessed_recipes.csv", chunksize = 10000)
+    df = pd.concat(chunk_iter)
     st.write(df.columns)
     return df
 
