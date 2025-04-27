@@ -19,6 +19,11 @@ reviews = load_reviews()
 #TFIDF
 @st.cache_resource
 def precompute_tfidf(recipes):
+    recipes['text_features'] = (
+        recipes['RecipeIngredientParts'].fillna('').astype(str) + " " +
+        recipes['Keywords'].fillna('').astype(str)
+    )
+    
     tfidf_model = TfidfVectorizer(
         stop_words='english',
         max_features=5000,
