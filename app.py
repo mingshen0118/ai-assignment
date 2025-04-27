@@ -7,11 +7,11 @@ import re
 # Load data
 @st.cache_data
 def load_recipes():
-    return pd.read_csv("https://drive.google.com/uc?id=1RQQk2fijSMUresMZnZSPN2OFBpx_4p2r")
+    return pd.read_csv("https://drive.google.com/uc?id=1RQQk2fijSMUresMZnZSPN2OFBpx_4p2r", low_memory=False)
 
 @st.cache_data
 def load_reviews():
-    return pd.read_csv("https://drive.google.com/uc?id=1xbHr4eftazl-005A56F-JufF4A9Rh5h9")
+    return pd.read_csv("https://drive.google.com/uc?id=1xbHr4eftazl-005A56F-JufF4A9Rh5h9", low_memory=False)
 
 recipes = load_recipes()
 reviews = load_reviews()
